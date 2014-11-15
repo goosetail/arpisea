@@ -1,4 +1,4 @@
-angular.module('arpisea', ['ui.bootstrap'])
+var APP_MODULE = angular.module('arpisea', ['ui.bootstrap'])
 
 	.controller('AppCtrl', ['$scope', function($scope) {
 
@@ -31,7 +31,8 @@ angular.module('arpisea', ['ui.bootstrap'])
 
 	.factory( 'RPC', [
 		'$http',
-		function( $http ) {
+		'rpcUrl',
+		function($http, rpcUrl) {
 
 			var requestId = 1;
 
@@ -72,18 +73,16 @@ angular.module('arpisea', ['ui.bootstrap'])
 
 				req: function req(method, params, callback) {
 
-					var url = '/rpc';
-
 					if ( typeof params === 'function' ) {
 						callback = params;
 						params = undefined;
 					}
 
 					if ( typeof callback !== 'function' ) {
-						callback = angular.noop
+						callback = angular.noop;
 					}
 
-					this.responseHandler($http.post(url, this.rpcWrapper(method, params)), callback);
+					this.responseHandler($http.post(rpcUrl, this.rpcWrapper(method, params)), callback);
 				}
 			}
 		}
