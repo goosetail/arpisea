@@ -1,4 +1,4 @@
 arpisea
 =======
 
-JSON Fling is a simple JSON-RPC framework for ExpressJS 4+
+Arpisea is a specification and complete framework implementation for describing, producing, consuming, and visualizing JSON-RPC web services.
