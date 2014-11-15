@@ -1,0 +1,30 @@
+{
+	"name": "arpisea",
+	"description": "Arpisea is a specification and complete framework implementation for describing, producing, consuming, and visualizing JSON-RPC web services.",
+	"version": "0.0.2",
+	"author": {
+		"name": "Pete Fredricks",
+		"email": "pete@goosetail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:goosetail/arpisea.git"
+	},
+	"dependencies": {
+		"async": "~0.9",
+		"express": "~4.8",
+		"jade": "~1.5",
+		"underscore": "*"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/goosetail/arpisea/issues"
+	},
+	"homepage": "https://github.com/goosetail/arpisea",
+	"maintainers": [
+		{
+			"name": "goosetail",
+			"email": "pete@goosetail.com"
+		}
+	]
+}

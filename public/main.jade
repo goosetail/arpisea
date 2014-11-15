@@ -1,0 +1,69 @@
+extends layout
+
+block content
+
+	.container.ng-cloak(ng-controller="AppCtrl")
+		h1 #{app}
+
+		each lib in libraries
+			h2
+				| #{lib.name}
+				if lib.description
+					em - #{lib.description}
+
+
+			accordion
+				each method in lib.methods
+					accordion-group
+						accordion-heading
+							.pull-right=method.title
+							span(class=typeof method.autoCreated !== 'undefined' ? "auto-created" : "") #{lib.name}.#{method.name}
+
+						if method.description
+							h4 Description
+							p= method.description
+
+						if method.parameters
+							h4 Parameters
+						else
+							h4 This method was auto created. Please add a description.
+						form(method-tester="#{lib.name}.#{method.name}")
+							if method.parameters
+								table.table
+									thead
+										tr
+											th Parameter
+											th Value
+											th Description
+											th Data Type
+									tbody
+										each param in method.parameters
+											tr
+												td= param.name
+												td
+													if param.type === 'string'
+														input.form-control(type="text", ng-model="form.#{param.name}")
+													else if param.type === 'number'
+														input.form-control(type="number", ng-model="form.#{param.name}")
+													else if param.type === 'boolean'
+														input(type="checkbox", ng-model="form.#{param.name}")
+												td= param.description
+												td= param.type
+							.btn.btn-primary(ng-click="execMethod()") Test Method
+
+							.output(ng-show="output")
+								h4 Output
+								pre {{output}}
+
+						if method.responseMessages
+							h4 Response Messages
+							table.table.messages-table
+								thead
+									tr
+										th HTTP Status Code
+										th Reason
+								tbody
+									each msg in method.responseMessages
+										tr
+											td= msg.code
+											td= msg.message
