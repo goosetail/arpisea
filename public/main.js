@@ -11,9 +11,9 @@ var APP_MODULE = angular.module('arpisea', ['ui.bootstrap'])
 
 		$scope.execMethod = function() {
 			RPC.req($scope.method, $scope.form, function(err, result) {
-				$scope.output = JSON.stringify(result, null, "  ");
+				$scope.output = JSON.stringify(err || result, null, "  ");
 			});
-    }
+		}
 	}])
 
 	.directive('methodTester', ['$compile', function($compile) {
@@ -46,7 +46,7 @@ var APP_MODULE = angular.module('arpisea', ['ui.bootstrap'])
 								callback( 'Error with the response.' );
 							}
 							else if (data.error) {
-								callback(JSON.stringify(data.error.message));
+								callback(data.error);
 							}
 							else {
 								callback(null, data.result);
