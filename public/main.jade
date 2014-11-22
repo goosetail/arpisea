@@ -41,12 +41,17 @@ block content
 											tr
 												td= param.name
 												td
-													if param.type === 'string'
+													if param.enum
+														select.form-control(ng-model="form.#{param.name}")
+															each val in param.enum
+																option #{val}
+													else if param.type === 'string'
 														input.form-control(type="text", ng-model="form.#{param.name}")
 													else if param.type === 'number'
 														input.form-control(type="number", ng-model="form.#{param.name}")
 													else if param.type === 'boolean'
 														input(type="checkbox", ng-model="form.#{param.name}")
+
 												td= param.description
 												td= param.type
 							.btn.btn-primary(ng-click="execMethod()") Test Method
