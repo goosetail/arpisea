@@ -1,7 +1,7 @@
 {
 	"name": "arpisea",
 	"description": "Arpisea is a specification and complete framework implementation for describing, producing, consuming, and visualizing JSON-RPC web services.",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"author": {
 		"name": "Pete Fredricks",
 		"email": "pete@goosetail.com"

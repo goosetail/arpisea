@@ -14,6 +14,7 @@ function createClient(params) {
 		libDir: params.libDir,
 		docFile: params.docFile,
 		server: params.server,
-		url: params.url
+		url: params.url,
+		app: params.app
 	});
 }
