@@ -15,6 +15,6 @@ function createClient(params) {
 		docFile: params.docFile,
 		server: params.server,
 		url: params.url,
-		app: params.app
+		version: params.version
 	});
 }

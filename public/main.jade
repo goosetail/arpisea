@@ -3,7 +3,10 @@ extends layout
 block content
 
 	.container.ng-cloak(ng-controller="AppCtrl")
-		h1 #{app}
+		h1.title #{appName}
+
+		if _version
+			h4.version Version: #{_version}
 
 		each lib in libraries
 			h2
