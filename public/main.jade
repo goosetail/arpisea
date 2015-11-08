@@ -58,7 +58,9 @@ block content
 
 												td= param.description
 												td= param.type
-							.btn.btn-primary(ng-click="execMethod()") Test Method
+							.btn.btn-primary(ng-click="execMethod($event)")
+								| Test Method
+								i.fa.fa-spinner.fa-pulse
 
 							.output(ng-show="output")
 								h4 Output
