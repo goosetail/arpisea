@@ -116,6 +116,6 @@ h2 em {
 	margin-left: 5px;
 }
 
-.btn.disabled i.fa {
+.btn[disabled] i.fa {
 	display: inline-block;
 }

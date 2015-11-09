@@ -9,20 +9,12 @@ var APP_MODULE = angular.module('arpisea', ['ui.bootstrap'])
 
 		$scope.form = {};
 
-		$scope.execMethod = function(evt) {
+		$scope.execMethod = function() {
 
-			var disabledClass = 'disabled';
-
-			var btn = $(evt.currentTarget);
-
-			if (btn.hasClass(disabledClass)) {
-				return;
-			}
-
-			btn.addClass(disabledClass);
+			$scope.processing = true;
 
 			RPC.req($scope.method, $scope.form, function(err, result) {
-				btn.removeClass(disabledClass);
+				$scope.processing = false;
 				$scope.output = JSON.stringify(err || result, null, "  ");
 			});
 		}
