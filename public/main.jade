@@ -51,6 +51,8 @@ block content
 																option #{val}
 													else if param.type === 'string'
 														input.form-control(type="text", ng-model="form.#{param.name}")
+													else if param.type === 'password'
+														input.form-control(type="password", ng-model="form.#{param.name}")
 													else if param.type === 'number'
 														input.form-control(type="number", ng-model="form.#{param.name}")
 													else if param.type === 'boolean'
@@ -64,7 +66,7 @@ block content
 
 							.output(ng-show="output")
 								h4 Output
-								pre {{output}}
+								pre(ng-class="{processing: processing}") {{output}}
 
 						if method.responseMessages
 							h4 Response Messages

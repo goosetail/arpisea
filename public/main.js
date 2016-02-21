@@ -4,7 +4,6 @@ var APP_MODULE = angular.module('arpisea', ['ui.bootstrap'])
 
 	}])
 
-
 	.controller('TesterCtrl', ['$scope', 'RPC',  function($scope, RPC) {
 
 		$scope.form = {};
