@@ -119,3 +119,7 @@ h2 em {
 .btn[disabled] i.fa {
 	display: inline-block;
 }
+
+pre.processing {
+	color: #ddd;
+}
