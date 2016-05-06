@@ -12,9 +12,12 @@ var APP_MODULE = angular.module('arpisea', ['ui.bootstrap'])
 
 			$scope.processing = true;
 
+			var start = Date.now();
+
 			RPC.req($scope.method, $scope.form, function(err, result) {
 				$scope.processing = false;
-				$scope.output = JSON.stringify(err || result, null, "  ");
+				$scope.time = Date.now() - start;
+				$scope.output = JSON.stringify(err || result, null, "  ") || 'ARPISEA: There was an unknown error with the request.';
 			});
 		}
 	}])
@@ -40,13 +43,13 @@ var APP_MODULE = angular.module('arpisea', ['ui.bootstrap'])
 			var requestId = 1;
 
 			return {
-				responseHandler: function( promise, callback ) {
+				responseHandler: function(promise, callback) {
 					var self = this;
 
 					promise
-						.success( function( data ) {
+						.success(function(data) {
 							if (!data) {
-								callback( 'Error with the response.' );
+								callback('Error with the response.');
 							}
 							else if (data.error) {
 								callback(data.error);
@@ -56,8 +59,7 @@ var APP_MODULE = angular.module('arpisea', ['ui.bootstrap'])
 							}
 						})
 						.error( function( data ) {
-							self.handleError( data );
-							callback( data );
+							callback(data);
 						});
 				},
 
