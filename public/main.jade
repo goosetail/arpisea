@@ -65,7 +65,9 @@ block content
 								i.fa.fa-spinner.fa-pulse
 
 							.output(ng-show="output")
-								h4 Output
+								h4
+									| Output &nbsp;
+									span(ng-show="time") ({{time}} ms)
 								pre(ng-class="{processing: processing}") {{output}}
 
 						if method.responseMessages
